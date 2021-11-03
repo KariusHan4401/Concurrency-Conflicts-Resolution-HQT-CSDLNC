@@ -16,7 +16,7 @@ create user employee1 for login employee1
 create user admin1 for login admin1
 
 --Create Role
-exec sp_addrole 'Co-operator'
+exec sp_addrole 'Cooperator'
 exec sp_addrole 'Customer'
 exec sp_addrole 'Driver'
 exec sp_addrole 'Employee'

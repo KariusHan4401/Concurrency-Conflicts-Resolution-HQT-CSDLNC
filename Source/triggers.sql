@@ -78,6 +78,103 @@ BEGIN
 		END
 END
 GO
+-- 1.	Khi tái ký hợp đồng, thời gian hiệu lực mới phải sau thời gian hiệu lực cũ.
+CREATE TRIGGER TG_INSERT_UPDATE_HOPDONG
+ON HOP_DONG FOR UPDATE, INSERT
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM inserted JOIN deleted
+				ON inserted.MAHD = deleted.MAHD
+				WHERE inserted.THOI_GIAN_HIEU_LUC < deleted.THOI_GIAN_HIEU_LUC
+				)
+		BEGIN
+			PRINT(N'Thời gian hiệu lực không hợp lệ!')
+			ROLLBACK
+		END
+
+	IF EXISTS(SELECT * FROM inserted JOIN DOI_TAC DT
+				ON inserted.MADT = DT.MADT
+				WHERE inserted.SO_CHI_NHANH_DK < DT.SO_CHI_NHANH
+				)
+		BEGIN
+			PRINT(N'Số lượng chi nhánh đăng ký không được vượt qua số chi nhánh của đối tác!')
+			ROLLBACK
+		END
+END
+GO
+CREATE TRIGGER TG_INSERT_UPDATE_LS_HOPDONG
+ON LICH_SU_HOP_DONG FOR INSERT, UPDATE
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM inserted 
+				WHERE inserted.THOI_GIAN_HIEU_LUC <= (SELECT MAX(LS.THOI_GIAN_HIEU_LUC)
+													FROM LICH_SU_HOP_DONG LS
+													WHERE inserted.MAHD = LS.MAHD)
+				)
+		BEGIN
+			PRINT(N'Thời gian hiệu lực không hợp lệ!')
+			ROLLBACK
+		END
+END
+GO
+
+-- 2. Khi trạng thái đơn hàng là  “Đã giao / Đã hủy” thì không được phép thay đổi thông tin vận chuyển đơn hàng
+CREATE TRIGGER TG_UPDATE_INSERT_DONHANG
+ON DON_HANG FOR UPDATE, INSERT
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM deleted
+				WHERE deleted.TRANG_THAI IN (N'Đã giao', N'Đã hủy')
+				)
+		BEGIN
+			PRINT(N'Không được thay đổi thông tin của trạng thái Đã giao/Đã hủy!')
+			ROLLBACK
+		END
+		-----------
+	IF EXISTS(SELECT * FROM inserted 
+				JOIN DOI_TAC DT ON DT.MADT = inserted.MADT
+				WHERE DT.SO_LUONG_DON < (SELECT COUNT(*)
+												FROM DON_HANG DH
+												WHERE inserted.MADT = DH.MADT
+												GROUP BY DH.MADT
+												)
+				)
+		BEGIN
+			PRINT(N'Số lượng đơn hàng bán ra vượt mức đăng ký của đối tác!')
+			ROLLBACK
+		END
+END
+GO
+
+-- 3. Tổng số lượng đơn hàng ở tất cả chi nhánh của đối tác không được vượt qua số lượng đơn hàng mỗi ngày đã đăng ký.
+-- + Số chi nhánh đăng ký trong hợp đồng không được vượt quá số chi nhánh của đối tác khi đăng ký thông tin. 
+CREATE TRIGGER TG_UPDATE_DOITAC
+ON DOI_TAC FOR UPDATE
+AS
+BEGIN
+	IF EXISTS(SELECT * FROM inserted
+				WHERE inserted.SO_LUONG_DON < (SELECT COUNT(*)
+												FROM DON_HANG DH
+												WHERE inserted.MADT = DH.MADT
+												GROUP BY DH.MADT
+												)
+				)
+		BEGIN
+			PRINT(N'Số lượng đơn hàng bán ra vượt mức đăng ký của đối tác!')
+			ROLLBACK
+		END
+
+	IF EXISTS(SELECT * FROM inserted JOIN HOP_DONG HD
+				ON inserted.MADT = HD.MADT
+				WHERE inserted.SO_CHI_NHANH < HD.SO_CHI_NHANH_DK
+				)
+		BEGIN
+			PRINT(N'Số lượng chi nhánh đăng ký không được vượt qua số chi nhánh của đối tác!')
+			ROLLBACK
+		END
+END
+
+
 
 UPDATE DON_HANG
 SET TONG_PHI = 0

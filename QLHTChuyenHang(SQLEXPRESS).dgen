@@ -296,7 +296,7 @@
             <NullProportion>10</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>45</SeedValue>
-            <Unique>false</Unique>
+            <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>($"FirstNamesMale.txt")|($"FirstNamesFemale.txt")</Expression>
           </GeneratorOptions>
@@ -489,7 +489,7 @@
             <SeedValue>0</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>($"C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\Cong_Ty.txt")</Expression>
+            <Expression>($"C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\Lab\DA_HQT_2021\Cong_Ty.txt")</Expression>
           </GeneratorOptions>
           <GeneratorType>SqlStringRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>
@@ -620,25 +620,6 @@
           <HasCheckConstraint>true</HasCheckConstraint>
           <Length>4</Length>
           <Precision>10</Precision>
-        </Column>
-        <Column Name="MAHD">
-          <Checked>false</Checked>
-          <DataType>char</DataType>
-          <GeneratorOptions xsi:type="SqlRegularExpressionGeneratorOptions">
-            <AllowEmptyStrings>false</AllowEmptyStrings>
-            <EmptyStringProportion>10</EmptyStringProportion>
-            <AllowNulls>false</AllowNulls>
-            <NullProportion>10</NullProportion>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>19</SeedValue>
-            <Unique>false</Unique>
-            <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>[0-9A-Z]+</Expression>
-          </GeneratorOptions>
-          <GeneratorType>SqlStringRegularExpressionGenerator</GeneratorType>
-          <GeneratorName>Reg Exp</GeneratorName>
-          <GeneratorDescription>values based on a regular expression</GeneratorDescription>
-          <Length>8</Length>
         </Column>
       </Columns>
     </Table>
@@ -989,7 +970,7 @@
             <NullProportion>10</NullProportion>
             <ValueDistributionMode>Seed</ValueDistributionMode>
             <SeedValue>31</SeedValue>
-            <Unique>false</Unique>
+            <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Expression>[0-9]{10}</Expression>
           </GeneratorOptions>

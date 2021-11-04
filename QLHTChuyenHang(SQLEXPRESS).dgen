@@ -253,6 +253,50 @@
         </Column>
       </Columns>
     </Table>
+    <Table Name="dbo.sysdiagrams">
+      <Checked>false</Checked>
+      <Settings>
+        <Truncate>true</Truncate>
+        <RowsToGenerate>0</RowsToGenerate>
+        <PopulationDetails>
+          <PopulationType>RowsCount</PopulationType>
+          <RowsCount>1000</RowsCount>
+          <LookupProportion>30</LookupProportion>
+          <ProportionOfExistingData>10</ProportionOfExistingData>
+          <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
+        </PopulationDetails>
+      </Settings>
+      <Columns>
+        <Column Name="diagram_id">
+          <Checked>false</Checked>
+          <DataType>int</DataType>
+          <Length>4</Length>
+          <Precision>10</Precision>
+        </Column>
+        <Column Name="name">
+          <Checked>false</Checked>
+          <DataType>nvarchar</DataType>
+          <Length>128</Length>
+        </Column>
+        <Column Name="principal_id">
+          <Checked>false</Checked>
+          <DataType>int</DataType>
+          <Length>4</Length>
+          <Precision>10</Precision>
+        </Column>
+        <Column Name="version">
+          <Checked>false</Checked>
+          <DataType>int</DataType>
+          <Length>4</Length>
+          <Precision>10</Precision>
+        </Column>
+        <Column Name="definition">
+          <Checked>false</Checked>
+          <DataType>varbinary(max)</DataType>
+          <Length>-1</Length>
+        </Column>
+      </Columns>
+    </Table>
     <Table Name="dbo.TAI_KHOAN">
       <Checked>true</Checked>
       <Settings>
@@ -1125,7 +1169,7 @@
             <SeedValue>20</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>DT(${counter([0-9]{6})})</Expression>
+            <Expression>DH(${counter([0-9]{6})})</Expression>
           </GeneratorOptions>
           <GeneratorType>SqlStringRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>

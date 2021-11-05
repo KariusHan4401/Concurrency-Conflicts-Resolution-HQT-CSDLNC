@@ -86,7 +86,7 @@
         <RowsToGenerate>0</RowsToGenerate>
         <PopulationDetails>
           <PopulationType>RowsCount</PopulationType>
-          <RowsCount>1000</RowsCount>
+          <RowsCount>63</RowsCount>
           <LookupProportion>30</LookupProportion>
           <ProportionOfExistingData>10</ProportionOfExistingData>
           <TimeTicksToPopulate>100000000</TimeTicksToPopulate>
@@ -693,7 +693,7 @@
             <SeedValue>32</SeedValue>
             <Unique>true</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
-            <Expression>TK(${counter([0-9]{6})})</Expression>
+            <Expression>KH(${counter([0-9]{6})})</Expression>
           </GeneratorOptions>
           <GeneratorType>SqlStringRegularExpressionGenerator</GeneratorType>
           <GeneratorName>Reg Exp</GeneratorName>

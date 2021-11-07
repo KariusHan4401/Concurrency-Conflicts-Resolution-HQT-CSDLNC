@@ -6,15 +6,17 @@ CREATE TRIGGER TG_TONGPHI_FOR_UPDATE_DONHANG
 ON DON_HANG FOR UPDATE
 AS
 BEGIN
-	IF EXISTS(SELECT * FROM inserted
+	/*IF EXISTS(SELECT * FROM inserted
 				WHERE inserted.PHI_GIAM > inserted.PHI_VAN_CHUYEN + inserted.PHI_SAN_PHAM)
 		BEGIN
 			PRINT(N'Giá giảm không được vượt quá tổng giá bán và phí vận chuyển!')
 			ROLLBACK
-		END
-
+		END*/
 	UPDATE DON_HANG
-	SET DON_HANG.TONG_PHI = DON_HANG.PHI_SAN_PHAM + DON_HANG.PHI_VAN_CHUYEN - DON_HANG.PHI_GIAM
+	SET TONG_PHI = CASE WHEN PHI_GIAM < PHI_VAN_CHUYEN + PHI_SAN_PHAM
+	THEN DON_HANG.PHI_SAN_PHAM + DON_HANG.PHI_VAN_CHUYEN - DON_HANG.PHI_GIAM
+	ELSE 0
+	END
 	WHERE DON_HANG.MADH IN (SELECT DISTINCT inserted.MADH FROM inserted)
 END
 GO
@@ -130,7 +132,7 @@ BEGIN
 			PRINT(N'Không được thay đổi thông tin của trạng thái Đã giao/Đã hủy!')
 			ROLLBACK
 		END
-		-----------
+		--------------------
 	IF EXISTS(SELECT * FROM inserted 
 				JOIN DOI_TAC DT ON DT.MADT = inserted.MADT
 				WHERE DT.SO_LUONG_DON < (SELECT COUNT(*)

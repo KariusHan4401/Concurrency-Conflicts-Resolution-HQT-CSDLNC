@@ -6,12 +6,6 @@ CREATE TRIGGER TG_TONGPHI_FOR_UPDATE_DONHANG
 ON DON_HANG FOR UPDATE
 AS
 BEGIN
-	/*IF EXISTS(SELECT * FROM inserted
-				WHERE inserted.PHI_GIAM > inserted.PHI_VAN_CHUYEN + inserted.PHI_SAN_PHAM)
-		BEGIN
-			PRINT(N'Giá giảm không được vượt quá tổng giá bán và phí vận chuyển!')
-			ROLLBACK
-		END*/
 	UPDATE DON_HANG
 	SET TONG_PHI = CASE WHEN PHI_GIAM < PHI_VAN_CHUYEN + PHI_SAN_PHAM
 	THEN DON_HANG.PHI_SAN_PHAM + DON_HANG.PHI_VAN_CHUYEN - DON_HANG.PHI_GIAM
@@ -22,6 +16,7 @@ END
 GO
 
 --TRIGGER TRÊN BẢNG CHI_TIET_DON_HANG CHO VIEC THEM SUA
+GO
 CREATE TRIGGER TG_THANHTIEN_FOR_INSERT_UPDATE_CTHD
 ON CHI_TIET_DON_HANG FOR UPDATE, INSERT
 AS
@@ -87,7 +82,8 @@ AS
 BEGIN
 	IF EXISTS(SELECT * FROM inserted JOIN deleted
 				ON inserted.MAHD = deleted.MAHD
-				WHERE inserted.THOI_GIAN_HIEU_LUC < deleted.THOI_GIAN_HIEU_LUC
+				WHERE inserted.NGAY_HET_HAN < deleted.NGAY_HET_HAN OR inserted.NGAY_KY < deleted.NGAY_KY
+				OR inserted.NGAY_KY > inserted.NGAY_HET_HAN
 				)
 		BEGIN
 			PRINT(N'Thời gian hiệu lực không hợp lệ!')
@@ -108,11 +104,13 @@ CREATE TRIGGER TG_INSERT_UPDATE_LS_HOPDONG
 ON LICH_SU_HOP_DONG FOR INSERT, UPDATE
 AS
 BEGIN
+	-- Chèn thêm Hợp đồng mới thì thời hạn hợp đồng A phải sau các thời hạn hợp đồng A đã ký trước đó.
 	IF EXISTS(SELECT * FROM inserted 
-				WHERE inserted.THOI_GIAN_HIEU_LUC <= (SELECT MAX(LS.THOI_GIAN_HIEU_LUC)
+				WHERE inserted.NGAY_KY <= (SELECT MAX(LS.NGAY_HET_HAN)
 													FROM LICH_SU_HOP_DONG LS
 													WHERE inserted.MAHD = LS.MAHD)
-				)
+				OR inserted.NGAY_KY > inserted.NGAY_HET_HAN
+													)
 		BEGIN
 			PRINT(N'Thời gian hiệu lực không hợp lệ!')
 			ROLLBACK
@@ -121,17 +119,17 @@ END
 GO
 
 -- 2. Khi trạng thái đơn hàng là  “Đã giao / Đã hủy” thì không được phép thay đổi thông tin vận chuyển đơn hàng
-CREATE TRIGGER TG_UPDATE_INSERT_DONHANG
+ALTER TRIGGER TG_UPDATE_INSERT_DONHANG
 ON DON_HANG FOR UPDATE, INSERT
 AS
 BEGIN
-	IF EXISTS(SELECT * FROM deleted
+	/*IF EXISTS(SELECT * FROM deleted
 				WHERE deleted.TRANG_THAI IN (N'Đã giao', N'Đã hủy')
 				)
 		BEGIN
 			PRINT(N'Không được thay đổi thông tin của trạng thái Đã giao/Đã hủy!')
 			ROLLBACK
-		END
+		END*/
 		--------------------
 	IF EXISTS(SELECT * FROM inserted 
 				JOIN DOI_TAC DT ON DT.MADT = inserted.MADT

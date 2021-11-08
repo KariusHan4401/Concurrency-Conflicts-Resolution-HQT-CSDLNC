@@ -3,18 +3,22 @@ go
 
 
 --Create login
-exec sp_addlogin 'DT1', 'DT1'
-exec sp_addlogin 'KH1', 'KH1'
-exec sp_addlogin 'TX1', 'TX1'
-exec sp_addlogin 'NV1', 'NV1'
-exec sp_addlogin 'QT1', 'QT1'
+exec sp_addlogin 'Meg', 'TK000021'
+exec sp_addlogin 'Lily', 'TK000027'
+exec sp_addlogin 'Keshi', 'TK000031'
+exec sp_addlogin 'Tarah', 'TK000011'
+exec sp_addlogin 'Luna', 'TK000012'
+exec sp_addlogin 'Jewel', 'TK000005'
+exec sp_addlogin 'Jack', 'TK000001'
 
 --Create user
-create user Meg for login DT1
-create user Keshi for login KH1
-create user Tarah for login TX1
-create user Jewel for login NV1
-create user Jack for login QT1
+create user Meg for login Meg
+create user Lily for login Lily
+create user Keshi for login Keshi
+create user Tarah for login Tarah
+create user Luna for login Luna
+create user Jewel for login Jewel
+create user Jack for login Jack
 
 --Create Role
 exec sp_addrole 'DOI_TAC'
@@ -25,8 +29,10 @@ exec sp_addrole 'QUAN_TRI'
 
 --Add users to role
 EXEC SP_ADDROLEMEMBER 'DOI_TAC' ,'Meg'
+EXEC SP_ADDROLEMEMBER 'DOI_TAC' ,'Lily'
 EXEC SP_ADDROLEMEMBER 'KHACH_HANG' ,'Keshi'
 EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Tarah'
+EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Luna'
 EXEC SP_ADDROLEMEMBER 'NHAN_VIEN' ,'Jewel'
 EXEC SP_ADDROLEMEMBER 'QUAN_TRI' ,'Jack'
 
@@ -129,7 +135,7 @@ WHERE TK.TENTK = CURRENT_USER --CURRENT_USER LÀ TÀI KHOẢN ĐANG ĐĂNG NHẬ
 GO
 
 GRANT SELECT ON UV_DHDOITAC TO DOI_TAC
-GRANT UPDATE(TRANG_THAI) ON UV_DHDOITAC TO DOI_TAC
+GRANT UPDATE ON UV_DHDOITAC(TRANG_THAI) TO DOI_TAC
 
 --PHÂN HỆ KHÁCH HÀNG
 -- KHÁCH HÀNG XEM DANH SÁCH ĐỐI TÁC

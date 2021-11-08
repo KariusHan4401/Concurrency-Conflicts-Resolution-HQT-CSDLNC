@@ -10,11 +10,11 @@ exec sp_addlogin 'NV1', 'NV1'
 exec sp_addlogin 'QT1', 'QT1'
 
 --Create user
-create user DT1 for login DT1
-create user KH1 for login KH1
-create user TX1 for login TX1
-create user NV1 for login NV1
-create user QT1 for login QT1
+create user Meg for login DT1
+create user Keshi for login KH1
+create user Tarah for login TX1
+create user Jewel for login NV1
+create user Jack for login QT1
 
 --Create Role
 exec sp_addrole 'DOI_TAC'
@@ -24,11 +24,11 @@ exec sp_addrole 'NHAN_VIEN'
 exec sp_addrole 'QUAN_TRI'
 
 --Add users to role
-EXEC SP_ADDROLEMEMBER 'DOI_TAC' ,'DT1'
-EXEC SP_ADDROLEMEMBER 'KHACH_HANG' ,'KH1'
-EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'TX1'
-EXEC SP_ADDROLEMEMBER 'NHAN_VIEN' ,'NV1'
-EXEC SP_ADDROLEMEMBER 'QUAN_TRI' ,'QT1'
+EXEC SP_ADDROLEMEMBER 'DOI_TAC' ,'Meg'
+EXEC SP_ADDROLEMEMBER 'KHACH_HANG' ,'Keshi'
+EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Tarah'
+EXEC SP_ADDROLEMEMBER 'NHAN_VIEN' ,'Jewel'
+EXEC SP_ADDROLEMEMBER 'QUAN_TRI' ,'Jack'
 
 --Grant authorization
 --PHÂN HỆ QUẢN TRỊ

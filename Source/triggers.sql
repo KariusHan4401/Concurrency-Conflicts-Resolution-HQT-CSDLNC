@@ -22,9 +22,10 @@ ON CHI_TIET_DON_HANG FOR UPDATE, INSERT
 AS
 BEGIN
 	UPDATE CHI_TIET_DON_HANG
-	SET CHI_TIET_DON_HANG.THANH_TIEN = (SELECT SP.GIA * CTDH.SO_LUONG
-										FROM SAN_PHAM SP
-										WHERE SP.MASP = CTDH.MASP
+	SET CHI_TIET_DON_HANG.THANH_TIEN = (SELECT PP.GIA * CTDH.SO_LUONG
+										FROM PHAN_PHOI PP JOIN CHI_NHANH CN ON PP.MACN = CN.MACN
+										JOIN DON_HANG DH ON DH.MADH = CTDH.MADH
+										WHERE PP.MASP = CTDH.MASP AND DH.MADT = CN.MADT
 										)
 	FROM CHI_TIET_DON_HANG CTDH
 	JOIN inserted ON inserted.MADH = CTDH.MADH AND inserted.MASP = CTDH.MASP
@@ -59,7 +60,7 @@ BEGIN
 END
 GO
 
---TRIGGER TRÊN BẢNG CHI_TIET_DON_HANG CHO VIEC XÓA
+--TRIGGER TRÊN BẢNG CHI_TIET_DON_HANG 
 CREATE TRIGGER TG_FOR_INSERT_UPDATE_TTDH
 ON TRANG_THAI_DON_HANG FOR UPDATE, INSERT
 AS
@@ -76,6 +77,7 @@ BEGIN
 END
 GO
 -- 1.	Khi tái ký hợp đồng, thời gian hiệu lực mới phải sau thời gian hiệu lực cũ.
+-- +  Mỗi đối tác chỉ lưu 1 hợp đồng duy nhất, nhưng có thể tái ký nhiều lần.
 CREATE TRIGGER TG_INSERT_UPDATE_HOPDONG
 ON HOP_DONG FOR UPDATE, INSERT
 AS
@@ -92,16 +94,24 @@ BEGIN
 
 	IF EXISTS(SELECT * FROM inserted JOIN DOI_TAC DT
 				ON inserted.MADT = DT.MADT
-				WHERE inserted.SO_CHI_NHANH_DK < DT.SO_CHI_NHANH
+				WHERE inserted.SO_CHI_NHANH_DK > DT.SO_CHI_NHANH
 				)
 		BEGIN
 			PRINT(N'Số lượng chi nhánh đăng ký không được vượt qua số chi nhánh của đối tác!')
 			ROLLBACK
 		END
+	-- Check trigger only for insert
+	IF NOT EXISTS (SELECT 1 FROM deleted) AND EXISTS (SELECT * FROM inserted
+				WHERE inserted.MADT IN (SELECT MADT FROM HOP_DONG))
+			BEGIN
+				PRINT(N'Tồn tại đối tác đã ký hợp đồng!')
+				ROLLBACK
+			END	
 END
+
 GO
-CREATE TRIGGER TG_INSERT_UPDATE_LS_HOPDONG
-ON LICH_SU_HOP_DONG FOR INSERT, UPDATE
+CREATE TRIGGER TG_INSERT_LS_HOPDONG
+ON LICH_SU_HOP_DONG FOR INSERT
 AS
 BEGIN
 	-- Chèn thêm Hợp đồng mới thì thời hạn hợp đồng A phải sau các thời hạn hợp đồng A đã ký trước đó.
@@ -119,17 +129,17 @@ END
 GO
 
 -- 2. Khi trạng thái đơn hàng là  “Đã giao / Đã hủy” thì không được phép thay đổi thông tin vận chuyển đơn hàng
-ALTER TRIGGER TG_UPDATE_INSERT_DONHANG
+CREATE TRIGGER TG_UPDATE_INSERT_DONHANG
 ON DON_HANG FOR UPDATE, INSERT
 AS
 BEGIN
-	/*IF EXISTS(SELECT * FROM deleted
+	IF EXISTS(SELECT * FROM deleted
 				WHERE deleted.TRANG_THAI IN (N'Đã giao', N'Đã hủy')
 				)
 		BEGIN
 			PRINT(N'Không được thay đổi thông tin của trạng thái Đã giao/Đã hủy!')
 			ROLLBACK
-		END*/
+		END
 		--------------------
 	IF EXISTS(SELECT * FROM inserted 
 				JOIN DOI_TAC DT ON DT.MADT = inserted.MADT
@@ -174,9 +184,8 @@ BEGIN
 		END
 END
 
-UPDATE DON_HANG
-SET TONG_PHI = 0
-GO
+
+UPDATE CHI_TIET_DON_HANG SET THANH_TIEN = 1
 /*
 INSERT CHI_TIET_DON_HANG VALUES('DH000000', 'SP000001', 2, 50000)
 GO

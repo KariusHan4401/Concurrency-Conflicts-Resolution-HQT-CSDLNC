@@ -7,6 +7,7 @@ exec sp_addlogin 'Lily', 'TK000027'
 exec sp_addlogin 'Keshi', 'TK000031'
 exec sp_addlogin 'Tarah', 'TK000011'
 exec sp_addlogin 'Luna', 'TK000012'
+exec sp_addlogin 'Adell', 'TK000018'
 exec sp_addlogin 'Jewel', 'TK000005'
 exec sp_addlogin 'Jack', 'TK000001'
 exec sp_addlogin 'Stacey', 'TK000002'
@@ -19,6 +20,7 @@ create user Tarah for login Tarah
 create user Luna for login Luna
 create user Jewel for login Jewel
 create user Jack for login Jack
+create user Adell for login Adell
 
 --Create Role
 exec sp_addrole 'DOI_TAC'
@@ -33,6 +35,7 @@ EXEC SP_ADDROLEMEMBER 'DOI_TAC' ,'Lily'
 EXEC SP_ADDROLEMEMBER 'KHACH_HANG' ,'Keshi'
 EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Tarah'
 EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Luna'
+EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Adell'
 EXEC SP_ADDROLEMEMBER 'NHAN_VIEN' ,'Jewel'
 EXEC SP_ADDROLEMEMBER 'QUAN_TRI' ,'Jack'
 
@@ -107,10 +110,21 @@ AS
 	FROM TAI_XE TX JOIN TAI_KHOAN TK ON TX.MATK = TK.MATK
 		JOIN PHIEU_GIAO_HANG PGH ON TX.MATX = PGH.MATX
 		JOIN DON_HANG DH ON DH.MADH = PGH.MADH
-	WHERE TK.TENTK = CURRENT_USER --CURRENT_USER LÀ TÀI KHOẢN ĐANG ĐĂNG NHẬP 
+	WHERE TK.TENTK = CURRENT_USER AND DH.TRANG_THAI = N'Đã giao hàng' --CURRENT_USER LÀ TÀI KHOẢN ĐANG ĐĂNG NHẬP 
 GO
 
 GRANT SELECT ON UV_TNTAIXE TO TAI_XE
+GO
+
+CREATE VIEW UV_DHTAIXEDANHAN
+AS	
+	SELECT PGH.MADH, PGH.NGAY_GIAO, DH.TRANG_THAI
+	FROM TAI_XE TX JOIN TAI_KHOAN TK ON TX.MATK = TK.MATK
+		JOIN PHIEU_GIAO_HANG PGH ON TX.MATX = PGH.MATX
+		JOIN DON_HANG DH ON DH.MADH = PGH.MADH
+	WHERE TK.TENTK = CURRENT_USER --CURRENT_USER LÀ TÀI KHOẢN ĐANG ĐĂNG NHẬP 
+GO
+GRANT SELECT ON UV_DHTAIXEDANHAN TO TAI_XE
 --PHÂN HỆ ĐỐI TÁC
 --GÁN QUYỀN TRUY CẬP ĐẾN THÔNG TIN CÁ NHÂN
 GO

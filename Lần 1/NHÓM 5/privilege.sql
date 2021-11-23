@@ -8,6 +8,7 @@ exec sp_addlogin 'Keshi', 'TK000031'
 exec sp_addlogin 'Tarah', 'TK000011'
 exec sp_addlogin 'Luna', 'TK000012'
 exec sp_addlogin 'Adell', 'TK000018'
+exec sp_addlogin 'Kath', 'TK000015'
 exec sp_addlogin 'Jewel', 'TK000005'
 exec sp_addlogin 'Jack', 'TK000001'
 exec sp_addlogin 'Stacey', 'TK000002'
@@ -21,7 +22,7 @@ create user Luna for login Luna
 create user Jewel for login Jewel
 create user Jack for login Jack
 create user Adell for login Adell
-
+create user Kath for login Kath
 --Create Role
 exec sp_addrole 'DOI_TAC'
 exec sp_addrole 'KHACH_HANG'
@@ -36,6 +37,7 @@ EXEC SP_ADDROLEMEMBER 'KHACH_HANG' ,'Keshi'
 EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Tarah'
 EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Luna'
 EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Adell'
+EXEC SP_ADDROLEMEMBER 'TAI_XE' ,'Kath'
 EXEC SP_ADDROLEMEMBER 'NHAN_VIEN' ,'Jewel'
 EXEC SP_ADDROLEMEMBER 'QUAN_TRI' ,'Jack'
 

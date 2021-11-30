@@ -1,0 +1,12 @@
+﻿USE QLHTChuyenHang
+GO
+
+--TK: Meg
+--Pass: TK000021
+
+DECLARE @FLAG INT
+EXEC @FLAG = USP_DOITENSP N'Bếp gas', N'Bếp gas mini'
+IF @FLAG = 0
+	PRINT N'CẬP NHẬT TÊN SẢN PHẨM THẤT BẠI'
+ELSE
+	PRINT N'CẬP NHẬT TÊN SẢN PHẨM THÀNH CÔNG'

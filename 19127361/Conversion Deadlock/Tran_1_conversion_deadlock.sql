@@ -1,4 +1,7 @@
-﻿SELECT * FROM UV_TTDOITAC
+﻿USE QLHTChuyenHang
+GO
+
+SELECT * FROM UV_TTDOITAC
 
 --tk: Lily
 --mk: TK000027

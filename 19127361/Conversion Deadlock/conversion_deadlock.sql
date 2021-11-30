@@ -1,5 +1,5 @@
-﻿--USE QLHTChuyenHang
-
+﻿USE QLHTChuyenHang
+GO
 --update người đại diện đối tác
 
 CREATE 

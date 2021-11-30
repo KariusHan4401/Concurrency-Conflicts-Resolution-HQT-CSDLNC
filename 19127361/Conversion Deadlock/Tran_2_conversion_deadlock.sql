@@ -1,4 +1,5 @@
-﻿--USE QLHTChuyenHang
+﻿USE QLHTChuyenHang
+GO
 
 --tk: Lily
 --mk: TK000027

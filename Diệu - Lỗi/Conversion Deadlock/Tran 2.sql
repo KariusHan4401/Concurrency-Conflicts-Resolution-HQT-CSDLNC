@@ -1,7 +1,10 @@
 ﻿--USE QLHTChuyenHang
 
+--tk: Lily
+--mk: TK000027
+
 SELECT * FROM UV_TTDOITAC
 
-EXEC USP_DT_Duong '522 Nguyễn Chí Thanhi'
+EXEC USP_DT_Duong '1407 Nguyễn Chí Thanh'
 
 SELECT * FROM UV_TTDOITAC

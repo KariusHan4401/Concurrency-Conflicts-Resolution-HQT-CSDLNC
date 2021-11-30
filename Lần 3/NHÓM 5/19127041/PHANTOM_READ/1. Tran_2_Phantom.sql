@@ -1,0 +1,11 @@
+﻿USE QLHTChuyenHang
+GO
+
+-- TÀI XẾ CẬP NHẬT ĐƠN HÀNG ĐÃ GIAO
+-- Tài khoản: Username: Luna, Password: TK000012
+
+DECLARE @FLAG INT
+EXEC @FLAG = USP_TX_DAGIAOHANG N'Đã giao hàng', 'DH000008', '2021-10-25 14:00:00.000'
+IF @FLAG = 1
+	PRINT N'CẬP NHẬT TRẠNG THÁI THẤT BẠI'
+ELSE PRINT N'CẬP NHẬT TRẠNG THÁI THÀNH CÔNG'

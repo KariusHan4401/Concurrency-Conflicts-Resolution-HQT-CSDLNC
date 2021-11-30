@@ -1,0 +1,7 @@
+﻿--USE QLHTChuyenHang
+
+SELECT * FROM UV_TTDOITAC
+
+EXEC USP_DT_Duong '522 Nguyễn Chí Thanhi'
+
+SELECT * FROM UV_TTDOITAC

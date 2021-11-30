@@ -1,0 +1,10 @@
+﻿SELECT * FROM UV_TTDOITAC
+--
+EXEC USP_DT_NDD N'Lê Thùy Dương'
+
+SELECT * FROM UV_TTDOITAC
+
+
+
+
+

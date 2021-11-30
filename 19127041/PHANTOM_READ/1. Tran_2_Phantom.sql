@@ -1,0 +1,1 @@
+﻿-- TÀI XẾ CẬP NHẬT ĐƠN HÀNG ĐÃ GIAO ---- Đăng nhập: Username: Luna, Password: TK000012USE QLHTChuyenHangGODECLARE @RT INTEXEC @RT = USP_TX_DAGIAOHANG N'Đã giao hàng','DH000008', '2021-10-25 12:00:00.000'IF @RT = 1	PRINT N'CẬP NHẬT TRẠNG THÁI THẤT BẠI'ELSE	PRINT N'CẬP NHẬT TRẠNG THÁI THÀNH CÔNG'

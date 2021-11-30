@@ -2,7 +2,7 @@
 GO
 -- 'Meg', 'TK000021'
 DECLARE @RT INT
-EXEC @RT = USP_DT_CASE2_FIX N'Trần Thanh An', 'CN000001', N'20 Ngô Quyền'
+EXEC @RT = USP_DT_TTCASE2 N'Trần Thanh An', 'CN000001', N'20 Ngô Quyền'
 IF @RT = 1
 	PRINT N'CÓ LỖI XẢY RA!'
 ELSE

@@ -70,7 +70,6 @@ namespace QLHTChuyenHang
                 {
                     connection.Open();
                     string query="";
-                    label1.Text = comboBox1.SelectedIndex.ToString();
                     switch (comboBox1.SelectedIndex)
                     {
                         case 0:
@@ -96,8 +95,31 @@ namespace QLHTChuyenHang
                     password = txtPw.Text;
                     myConnection = getConnectionString(txtUsername.Text, txtPw.Text);
                     role = comboBox1.SelectedItem.ToString();
-                    ThongTinDT ttdt = new ThongTinDT();
-                    ttdt.Show();
+                    switch (comboBox1.SelectedIndex)
+                    {
+                        case 0:
+                            DoanhThuDT ad = new DoanhThuDT();
+                            ad.Show();
+                            break;
+                        case 1:
+                            DoanhThuDT dt = new DoanhThuDT();
+                            dt.Show();
+                            break;
+                        case 2:
+                            DoanhThuDT kh = new DoanhThuDT();
+                            kh.Show();
+                            break;
+                        case 3:
+                            TaiXeUpdateDH tx = new TaiXeUpdateDH();
+                            tx.Show();
+                            break;
+                        case 4:
+                            TaiXeUpdateDH nv = new TaiXeUpdateDH();
+                            nv.Show();
+                            break;
+
+                    }
+                    
                     this.Hide();
                     connection.Close();
 

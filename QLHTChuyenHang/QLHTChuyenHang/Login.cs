@@ -69,12 +69,33 @@ namespace QLHTChuyenHang
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM UV_TTDOITAC";
+                    string query="";
+                    label1.Text = comboBox1.SelectedIndex.ToString();
+                    switch (comboBox1.SelectedIndex)
+                    {
+                        case 0:
+                            query = "SELECT MATK FROM TAI_KHOAN";
+                            break;
+                        case 1:
+                            query = "SELECT MATK FROM UV_TTDOITAC";
+                            break;
+                        case 2:
+                            query = "SELECT MATK FROM UV_TTKHACHHANG";
+                            break;
+                        case 3:
+                            query = "SELECT MATX FROM UV_TTTAIXE";
+                            break;
+                        case 4:
+                            query = "SELECT MADT FROM DOI_TAC"; // Do nhân viên có thể truy cập được bảng này
+                            break;
+                    }
+
                     SqlCommand cmd = new SqlCommand(query, connection);
                     MessageBox.Show("Login successed!");
                     username = txtUsername.Text;
                     password = txtPw.Text;
                     myConnection = getConnectionString(txtUsername.Text, txtPw.Text);
+                    role = comboBox1.SelectedItem.ToString();
                     ThongTinDT ttdt = new ThongTinDT();
                     ttdt.Show();
                     this.Hide();

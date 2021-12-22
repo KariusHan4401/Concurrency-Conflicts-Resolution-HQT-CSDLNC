@@ -30,8 +30,8 @@ namespace QLHTChuyenHang
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Username = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPw = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -51,23 +51,23 @@ namespace QLHTChuyenHang
             this.label1.Text = "LOGIN";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Username
+            // txtUsername
             // 
-            this.Username.Font = new System.Drawing.Font("Century Gothic", 10.2F);
-            this.Username.Location = new System.Drawing.Point(254, 173);
-            this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(325, 28);
-            this.Username.TabIndex = 1;
-            this.Username.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtUsername.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.txtUsername.Location = new System.Drawing.Point(254, 173);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(325, 28);
+            this.txtUsername.TabIndex = 1;
+            this.txtUsername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // txtPw
             // 
-            this.textBox2.AllowDrop = true;
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 10.2F);
-            this.textBox2.Location = new System.Drawing.Point(254, 241);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(325, 28);
-            this.textBox2.TabIndex = 2;
+            this.txtPw.AllowDrop = true;
+            this.txtPw.Font = new System.Drawing.Font("Century Gothic", 10.2F);
+            this.txtPw.Location = new System.Drawing.Point(254, 241);
+            this.txtPw.Name = "txtPw";
+            this.txtPw.Size = new System.Drawing.Size(325, 28);
+            this.txtPw.TabIndex = 2;
             // 
             // label2
             // 
@@ -119,6 +119,7 @@ namespace QLHTChuyenHang
             this.button1.TabIndex = 6;
             this.button1.Text = "LOGIN";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -132,7 +133,7 @@ namespace QLHTChuyenHang
             this.label4.Text = "x";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // Form1
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,11 +143,12 @@ namespace QLHTChuyenHang
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.Username);
+            this.Controls.Add(this.txtPw);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -157,8 +159,8 @@ namespace QLHTChuyenHang
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Username;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.TextBox txtPw;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;

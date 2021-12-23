@@ -22,3 +22,5 @@ C:\Users\lephu\Desktop\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.cs
 C:\Users\lephu\Desktop\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.exe
 C:\Users\lephu\Desktop\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.pdb
 C:\Users\lephu\Desktop\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.TaiXeUpdateDH.resources
+C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.DoanhThuDT.resources
+C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.TaiXeUpdateDH.resources

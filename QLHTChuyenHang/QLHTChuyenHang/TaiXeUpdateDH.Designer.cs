@@ -99,13 +99,13 @@ namespace QLHTChuyenHang
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
             this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.ButtonFace;
             this.dateTimePicker1.Location = new System.Drawing.Point(226, 205);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2021, 12, 22, 0, 0, 0, 0);
+            this.dateTimePicker1.MaxDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(2016, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.MinimumSize = new System.Drawing.Size(325, 32);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(325, 32);
             this.dateTimePicker1.TabIndex = 27;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 12, 22, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 0, 0, 0, 0);
             // 
             // label5
             // 

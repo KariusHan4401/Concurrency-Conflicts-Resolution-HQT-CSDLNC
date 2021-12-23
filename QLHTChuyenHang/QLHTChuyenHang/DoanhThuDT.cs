@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace QLHTChuyenHang
 {
@@ -19,24 +20,56 @@ namespace QLHTChuyenHang
         }
 
         SqlConnection connection = new SqlConnection(Login.myConnection);
-        void LoadData(string query, DataGridView dataGrid)
+        void LoadDoanhThu()
         {
+            connection.Open();
+
+            SqlCommand command = connection.CreateCommand();
+            SqlTransaction transaction;
+
+            transaction = connection.BeginTransaction("XemDoanhThu");
+
+            command.Connection = connection;
+            command.Transaction = transaction;
+
             try
             {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand(query, connection);
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-                dataGrid.DataSource = dataTable;
-                dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                connection.Close();
+                // Lỗi Phantom Read
+                //command.CommandText =
+                //"SET TRAN ISOLATION LEVEL REPEATABLE READ  SELECT * FROM UV_DOANHTHUDT";
+
+                // Fix Lỗi
+                command.CommandText =
+                        "SET TRAN ISOLATION LEVEL SERIALIZABLE  SELECT * FROM UV_DOANHTHUDT";
+                SqlDataAdapter sqlDA = new SqlDataAdapter(command);
+                DataTable dt1 = new DataTable();
+                sqlDA.Fill(dt1);
+                gridViewDT.DataSource = dt1;
+                gridViewDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                Thread.Sleep(5000);
+                command.CommandText =
+                    "SELECT MADH, PHI_SAN_PHAM, PHI_GIAM, PHI_SAN_PHAM - PHI_GIAM AS THANH_TIEN, HINH_THUC_THANH_TOAN FROM UV_DHDOITAC WHERE TRANG_THAI = N'Đã giao hàng'";
+                sqlDA = new SqlDataAdapter(command);
+                DataTable dt2 = new DataTable();
+                sqlDA.Fill(dt2);
+                gridViewDSDH.DataSource = dt2;
+                gridViewDSDH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                transaction.Commit();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                connection.Close();
+                try
+                {
+                    transaction.Rollback();
+                }
+                catch (Exception ex2)
+                {
+                    MessageBox.Show(ex2.Message);
+                }
             }
+
+            connection.Close();
         }
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -57,18 +90,16 @@ namespace QLHTChuyenHang
 
         private void btnDoanhThu_Click(object sender, EventArgs e)
         {
-            LoadData("SET TRAN ISOLATION LEVEL REPEATABLE READ  SELECT * FROM UV_DOANHTHUDT", gridViewDT);
+            LoadDoanhThu();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string query = "SELECT MADH, PHI_SAN_PHAM, PHI_GIAM, PHI_SAN_PHAM - PHI_GIAM AS THANH_TIEN, HINH_THUC_THANH_TOAN FROM UV_DHDOITAC WHERE TRANG_THAI = N'Đã giao hàng'";
-            LoadData(query, gridViewDSDH);
+            LoadDoanhThu();
         }
 
         private void DoanhThuDT_Load(object sender, EventArgs e)
         {
-            LoadData("SET TRAN ISOLATION LEVEL REPEATABLE READ  SELECT * FROM UV_DOANHTHUDT", gridViewDT);
 
         }
     }

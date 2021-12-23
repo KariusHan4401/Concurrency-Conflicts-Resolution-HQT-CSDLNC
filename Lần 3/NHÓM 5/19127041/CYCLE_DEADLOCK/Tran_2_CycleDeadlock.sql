@@ -1,11 +1,5 @@
 ﻿USE QLHTChuyenHang
 GO
 -- 'Meg', 'TK000021'
-DECLARE @RT INT
-EXEC @RT = USP_DT_TTCASE2 N'Trần Thanh An', 'CN000001', N'20 Ngô Quyền'
-IF @RT = 1
-	PRINT N'CÓ LỖI XẢY RA!'
-ELSE
-	PRINT N'CẬP NHẬT THÔNG TIN THÀNH CÔNG'
-
+EXEC USP_DT_TTCASE2 N'Trần Thanh An', 'CN000001', N'An Lạc'
 

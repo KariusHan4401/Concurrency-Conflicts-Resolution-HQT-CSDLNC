@@ -2,6 +2,7 @@
 USE QLHTChuyenHang
 GO
 
+-- THÊM CHI TIẾT ĐƠN HÀNG --
 CREATE 
 --ALTER 
 PROC USP_THEM_CTDH 
@@ -21,6 +22,7 @@ BEGIN
 END
 GO
 
+-- UPDATE SỐ LƯỢNG SẢN PHẨM TRONG CHI TIẾT ĐƠN HÀNG -- 
 CREATE 
 --ALTER 
 PROC USP_SUA_SOLUONG_CTDH
@@ -46,9 +48,81 @@ BEGIN
 	WHERE DON_HANG.MADH = @MADH
 END
 GO
+-- GIA HẠN HỢP ĐỒNG (UPDATE THỜI HẠN TRONG BẢNG HOP_DONG) --
+CREATE OR ALTER PROC USP_GIA_HAN_HOP_DONG
+@MAHD CHAR(8), @NGAY_KY DATE, @NGAY_HET_HAN DATE
+AS
+BEGIN
+	IF (@MAHD NOT IN (SELECT MAHD FROM HOP_DONG))
+	BEGIN
+		PRINT N'MAHD không tồn tại!'
+		RETURN
+	END
+	DECLARE @STT INT
+	SELECT @STT = ISNULL(MAX(STT),0)+1
+    FROM LICH_SU_HOP_DONG
+    WHERE MAHD = @MAHD
+	INSERT LICH_SU_HOP_DONG VALUES(@MAHD, @STT, @NGAY_KY, @NGAY_HET_HAN)
+	UPDATE HOP_DONG SET NGAY_KY = @NGAY_KY, NGAY_HET_HAN = @NGAY_HET_HAN
+	WHERE MAHD = @MAHD
+END
 
+GO
+-- THÊM HỢP ĐỒNG --> ĐỒNG THỜI LƯU VÀO BẢNG LỊCH SỬ HỢP ĐỒNG 
+CREATE PROC USP_THEM_HOP_DONG
+@MAHD CHAR(8), @MADT CHAR(8), @NGAY_KY DATE, @NGAY_HET_HAN DATE, @SO_CN_DK INT, @MSTHUE VARCHAR(20), @HOA_HONG DEC(5,4)
+AS BEGIN
+	IF (@SO_CN_DK > (SELECT SO_CHI_NHANH FROM DOI_TAC WHERE MADT = @MADT))
+	BEGIN
+		PRINT N'Số chi nhánh đăng ký > Tổng số chi nhánh của đối tác'
+		RETURN
+	END
+	IF NOT EXISTS (SELECT MADT FROM DOI_TAC WHERE MADT = @MADT)
+	BEGIN
+		PRINT N'Không tồn tại đối tác!'
+		RETURN
+	END
+	IF EXISTS(SELECT MADT FROM HOP_DONG WHERE MADT = @MADT)
+	BEGIN
+		PRINT N'Đối tác đã ký hợp đồng trước đó!'
+		RETURN
+	END
+	INSERT HOP_DONG VALUES(@MAHD, @MADT, @NGAY_KY, @NGAY_HET_HAN, @SO_CN_DK, @MSTHUE, @HOA_HONG)
+	INSERT LICH_SU_HOP_DONG VALUES(@MAHD, 1, @NGAY_KY, @NGAY_HET_HAN)
+END
+
+GO
+-- CẬP NHẬT TRẠNG THÁI ĐƠN HÀNG --
+CREATE PROC USP_UPDATE_TRANG_THAI_DH
+@MADH CHAR(8), @TRANG_THAI NVARCHAR(20), @THOI_GIAN DATE
+AS BEGIN
+	IF NOT EXISTS (SELECT MADH FROM DON_HANG WHERE MADT = @MADH)
+	BEGIN
+		PRINT N'Không tồn tại đơn hàng!'
+		RETURN
+	END
+	UPDATE DON_HANG SET TRANG_THAI = @TRANG_THAI WHERE MADH = @MADH
+	INSERT TRANG_THAI_DON_HANG VALUES(@TRANG_THAI, @MADH, @THOI_GIAN)
+END
+
+GO
+-- CẬP NHẬT SỐ LƯỢNG ĐƠN HÀNG CỦA ĐỐI TÁC --
+CREATE PROC USP_UPDATE_SL_DON_DT
+@MADT CHAR(8), @SL_DON INT
+AS BEGIN
+	IF (@SL_DON < (SELECT COUNT(*)
+					FROM DON_HANG DH
+					WHERE MADT = @MADT))
+	BEGIN
+		PRINT N'Số lượng đơn hàng đối tác bán ra đã vượt qua mức cho phép!'
+		RETURN
+	END
+
+	UPDATE DOI_TAC SET SO_LUONG_DON = @SL_DON
+END
 ---------------------------------------------
 --TRIGGER TRÊN BẢNG CHI_TIET_DON_HANG CHO VIEC XÓA
+GO
 CREATE TRIGGER TG_TONGPHI_FOR_DELETE_CTDH
 ON CHI_TIET_DON_HANG FOR DELETE
 AS
@@ -61,123 +135,22 @@ BEGIN
 							)
 	WHERE DON_HANG.MADH IN (SELECT DISTINCT MADH FROM deleted)
 END
-GO
-
---TRIGGER TRÊN BẢNG CHI_TIET_DON_HANG 
-CREATE TRIGGER TG_FOR_INSERT_UPDATE_TTDH
-ON TRANG_THAI_DON_HANG FOR UPDATE, INSERT
-AS
-BEGIN
-	IF EXISTS(SELECT * FROM inserted 
-				WHERE inserted.THOI_GIAN < (SELECT MAX(TTDH.THOI_GIAN)
-													FROM TRANG_THAI_DON_HANG TTDH
-													WHERE inserted.MADH = TTDH.MADH
-													AND inserted.TEN_TRANG_THAI != TTDH.TEN_TRANG_THAI)
-				)
-		BEGIN
-			PRINT(N'Thời gian của trạng thái mới không hợp lệ!')
-			ROLLBACK
-		END
-END
-GO
--- 1.	Khi tái ký hợp đồng, thời gian hiệu lực mới phải sau thời gian hiệu lực cũ.
--- +  Mỗi đối tác chỉ lưu 1 hợp đồng duy nhất, nhưng có thể tái ký nhiều lần.
-CREATE TRIGGER TG_INSERT_UPDATE_HOPDONG
-ON HOP_DONG FOR UPDATE, INSERT
-AS
-BEGIN
-	IF EXISTS(SELECT * FROM inserted JOIN deleted
-				ON inserted.MAHD = deleted.MAHD
-				WHERE inserted.NGAY_HET_HAN < deleted.NGAY_HET_HAN OR inserted.NGAY_KY < deleted.NGAY_KY
-				OR inserted.NGAY_KY > inserted.NGAY_HET_HAN
-				)
-		BEGIN
-			PRINT(N'Thời gian hiệu lực không hợp lệ!')
-			ROLLBACK
-		END
-
-	IF EXISTS(SELECT * FROM inserted JOIN DOI_TAC DT
-				ON inserted.MADT = DT.MADT
-				WHERE inserted.SO_CHI_NHANH_DK > DT.SO_CHI_NHANH
-				)
-		BEGIN
-			PRINT(N'Số lượng chi nhánh đăng ký không được vượt qua số chi nhánh của đối tác!')
-			ROLLBACK
-		END
-	-- Check trigger only for insert
-	IF NOT EXISTS (SELECT 1 FROM deleted) AND EXISTS (SELECT * FROM inserted
-				WHERE inserted.MADT IN (SELECT MADT FROM HOP_DONG))
-			BEGIN
-				PRINT(N'Tồn tại đối tác đã ký hợp đồng!')
-				ROLLBACK
-			END	
-END
 
 GO
-CREATE TRIGGER TG_INSERT_LS_HOPDONG
-ON LICH_SU_HOP_DONG FOR INSERT
-AS
-BEGIN
-	-- Chèn thêm Hợp đồng mới thì thời hạn hợp đồng A phải sau các thời hạn hợp đồng A đã ký trước đó.
-	IF EXISTS(SELECT * FROM inserted 
-				WHERE inserted.NGAY_KY < (SELECT MAX(LS.NGAY_HET_HAN)
-													FROM LICH_SU_HOP_DONG LS
-													WHERE inserted.MAHD = LS.MAHD
-													AND LS.STT != inserted.STT)
-				OR inserted.NGAY_KY > inserted.NGAY_HET_HAN
-													)
-		BEGIN
-			PRINT(N'Thời gian hiệu lực không hợp lệ!')
-			ROLLBACK
-		END
-END
-GO
-
 -- 2. Số lượng đơn hàng bán ra không được vượt mức đăng ký của đối tác
 CREATE TRIGGER TG_INSERT_UPDATE_DONHANG
 ON DON_HANG FOR UPDATE, INSERT
 AS
 BEGIN
-	------
 	IF EXISTS(SELECT * FROM inserted 
 				JOIN DOI_TAC DT ON DT.MADT = inserted.MADT
 				WHERE DT.SO_LUONG_DON < (SELECT COUNT(*)
 												FROM DON_HANG DH
 												WHERE inserted.MADT = DH.MADT
-												GROUP BY DH.MADT
 												)
 				)
 		BEGIN
 			PRINT(N'Số lượng đơn hàng bán ra vượt mức đăng ký của đối tác!')
-			ROLLBACK
-		END
-END
-GO
-
--- 3. Tổng số lượng đơn hàng ở tất cả chi nhánh của đối tác không được vượt qua số lượng đơn hàng mỗi ngày đã đăng ký.
--- + Số chi nhánh đăng ký trong hợp đồng không được vượt quá số chi nhánh của đối tác khi đăng ký thông tin. 
-CREATE TRIGGER TG_UPDATE_DOITAC
-ON DOI_TAC FOR UPDATE
-AS
-BEGIN
-	IF EXISTS(SELECT * FROM inserted
-				WHERE inserted.SO_LUONG_DON < (SELECT COUNT(*)
-												FROM DON_HANG DH
-												WHERE inserted.MADT = DH.MADT
-												GROUP BY DH.MADT
-												)
-				)
-		BEGIN
-			PRINT(N'Số lượng đơn hàng bán ra vượt mức đăng ký của đối tác!')
-			ROLLBACK
-		END
-
-	IF EXISTS(SELECT * FROM inserted JOIN HOP_DONG HD
-				ON inserted.MADT = HD.MADT
-				WHERE inserted.SO_CHI_NHANH < HD.SO_CHI_NHANH_DK
-				)
-		BEGIN
-			PRINT(N'Số lượng chi nhánh đăng ký không được vượt qua số chi nhánh của đối tác!')
 			ROLLBACK
 		END
 END

@@ -24,7 +24,7 @@ namespace QLHTChuyenHang
         }
         public string getConnectionString(string name, string pw)
         {
-            return @"Server=LIN-LIN\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
+            return @"Server=LAPTOP-KTF30DB7\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
 
         }
 
@@ -98,7 +98,7 @@ namespace QLHTChuyenHang
                     switch (comboBox1.SelectedIndex)
                     {
                         case 0:
-                            DoanhThuDT ad = new DoanhThuDT();
+                            ProductForm ad = new ProductForm();
                             ad.Show();
                             break;
                         case 1:
@@ -106,7 +106,7 @@ namespace QLHTChuyenHang
                             dt.Show();
                             break;
                         case 2:
-                            DoanhThuDT kh = new DoanhThuDT();
+                            HomePage kh = new HomePage();
                             kh.Show();
                             break;
                         case 3:

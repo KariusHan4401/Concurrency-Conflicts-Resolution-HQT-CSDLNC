@@ -24,3 +24,18 @@ C:\Users\lephu\Desktop\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.pd
 C:\Users\lephu\Desktop\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.TaiXeUpdateDH.resources
 C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.DoanhThuDT.resources
 C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.TaiXeUpdateDH.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.exe.config
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.exe
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.pdb
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.csprojAssemblyReference.cache
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.DoanhThuDT.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.HomePage.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.Login.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ProductForm.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.Properties.Resources.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.TaiXeUpdateDH.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTinDT.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.csproj.GenerateResource.cache
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.csproj.CoreCompileInputs.cache
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.exe
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.pdb

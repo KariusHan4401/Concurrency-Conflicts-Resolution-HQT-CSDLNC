@@ -46,7 +46,7 @@ namespace QLHTChuyenHang
                 sqlDA.Fill(dt1);
                 gridViewDT.DataSource = dt1;
                 gridViewDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                Thread.Sleep(5000);
+                Thread.Sleep(4000);
                 command.CommandText =
                     "SELECT MADH, PHI_SAN_PHAM, PHI_GIAM, PHI_SAN_PHAM - PHI_GIAM AS THANH_TIEN, HINH_THUC_THANH_TOAN FROM UV_DHDOITAC WHERE TRANG_THAI = N'Đã giao hàng'";
                 sqlDA = new SqlDataAdapter(command);
@@ -100,7 +100,6 @@ namespace QLHTChuyenHang
 
         private void DoanhThuDT_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -17,19 +17,32 @@ namespace QLHTChuyenHang
         {
             InitializeComponent();
         }
+        public IList<TaiXeUpdateDH> dsDonHang = new List<TaiXeUpdateDH>();
+        public DataTable dataTable { get; set; }
 
         SqlConnection connection = new SqlConnection(Login.myConnection);
-        void LoadData(string query, DataGridView dataGrid)
+        void LoadData()
         {
             try
             {
+                string query1 = "SELECT * FROM UV_DHTAIXEDANHAN";
+                string query2 = "SELECT * FROM UV_TTDHTAIXE";
                 connection.Open();
-                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlCommand cmd = new SqlCommand(query1, connection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-                DataTable dataTable = new DataTable();
+                dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
-                dataGrid.DataSource = dataTable;
-                dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                gridViewDSDH.DataSource = dataTable;
+                gridViewDSDH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                cbMaDH.DataSource = dataTable;
+                cbMaDH.DisplayMember = "MADH";
+                cbMaDH.ValueMember = "MADH";
+                cmd = new SqlCommand(query2, connection);
+                sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dataTable1 = new DataTable();
+                sqlDataAdapter.Fill(dataTable1);
+                gridViewTTDH.DataSource = dataTable1;
+                gridViewTTDH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 connection.Close();
             }
             catch (Exception ex)
@@ -41,7 +54,8 @@ namespace QLHTChuyenHang
 
         private void TaiXeUpdateDH_Load(object sender, EventArgs e)
         {
-            LoadData("SELECT MADH, MADT, TRANG_THAI, PHI_SAN_PHAM, PHI_VAN_CHUYEN, PHI_GIAM, TONG_PHI FROM UV_DHTAIXE", gridViewDSDH);
+            LoadData();
+
         }
 
         private void gridViewDSDH_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -51,21 +65,21 @@ namespace QLHTChuyenHang
 
         private void btnDaNhan_Click(object sender, EventArgs e)
         {
-            LoadData("SELECT MADH, MADT, TRANG_THAI, PHI_SAN_PHAM, PHI_VAN_CHUYEN, PHI_GIAM, TONG_PHI FROM UV_DHTAIXE", gridViewDSDH);
+            LoadData();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtMaDH.Text == "" || cbTrangThai.SelectedIndex == -1)
+            if (cbTrangThai.SelectedIndex == -1 || cbMaDH.SelectedIndex == -1)
             {
-                MessageBox.Show("Vui lòng điền đủ thông tin!");
+                MessageBox.Show("Vui lòng chọn đủ thông tin!");
             }
             else
             {
                 try
                 {
                     connection.Open();
-                    string query = "EXEC USP_TX_DAGIAOHANG N'" + cbTrangThai.SelectedItem.ToString() + "', '" + txtMaDH.Text + "', '" + dateTimePicker1.Value + "'";
+                    string query = "EXEC USP_TX_DAGIAOHANG N'" + cbTrangThai.SelectedItem.ToString() + "', '" + dataTable.Rows[cbMaDH.SelectedIndex].ItemArray[0].ToString() + "', '" + dateTimePicker1.Value + "'";
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
                     connection.Close();
@@ -77,8 +91,8 @@ namespace QLHTChuyenHang
                 }
 
             }
+            LoadData();
 
-            LoadData("SELECT MADH, MADT, TRANG_THAI, PHI_SAN_PHAM, PHI_VAN_CHUYEN, PHI_GIAM, TONG_PHI FROM UV_DHTAIXE", gridViewDSDH); 
         }
 
         private void txtMaDH_TextChanged(object sender, EventArgs e)

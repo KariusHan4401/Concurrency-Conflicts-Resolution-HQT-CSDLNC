@@ -32,19 +32,22 @@ namespace QLHTChuyenHang
             this.btnDaNhan = new System.Windows.Forms.Button();
             this.btnXemInfo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbMaDH = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.cbTrangThai = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMaDH = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.gridViewDSDH = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
+            this.gridViewTTDH = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSDH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTTDH)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDaNhan
@@ -77,12 +80,14 @@ namespace QLHTChuyenHang
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.gridViewTTDH);
+            this.panel1.Controls.Add(this.cbMaDH);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cbTrangThai);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtMaDH);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.gridViewDSDH);
@@ -91,21 +96,32 @@ namespace QLHTChuyenHang
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(208, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(775, 560);
+            this.panel1.Size = new System.Drawing.Size(775, 714);
             this.panel1.TabIndex = 12;
+            // 
+            // cbMaDH
+            // 
+            this.cbMaDH.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMaDH.ForeColor = System.Drawing.Color.LightSeaGreen;
+            this.cbMaDH.FormattingEnabled = true;
+            this.cbMaDH.Location = new System.Drawing.Point(226, 98);
+            this.cbMaDH.Name = "cbMaDH";
+            this.cbMaDH.Size = new System.Drawing.Size(195, 32);
+            this.cbMaDH.TabIndex = 28;
+            this.cbMaDH.Text = "Chọn MADH";
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.SystemColors.ControlText;
             this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.SystemColors.ButtonFace;
             this.dateTimePicker1.Location = new System.Drawing.Point(226, 205);
-            this.dateTimePicker1.MaxDate = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 0, 0, 0, 0);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2021, 12, 23, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(2016, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.MinimumSize = new System.Drawing.Size(325, 32);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(325, 32);
             this.dateTimePicker1.TabIndex = 27;
-            this.dateTimePicker1.Value = new System.DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, System.DateTime.Now.Day, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(2021, 12, 23, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -155,15 +171,6 @@ namespace QLHTChuyenHang
             this.label2.TabIndex = 22;
             this.label2.Text = "Mã đơn hàng";
             // 
-            // txtMaDH
-            // 
-            this.txtMaDH.Location = new System.Drawing.Point(226, 94);
-            this.txtMaDH.Multiline = true;
-            this.txtMaDH.Name = "txtMaDH";
-            this.txtMaDH.Size = new System.Drawing.Size(160, 30);
-            this.txtMaDH.TabIndex = 21;
-            this.txtMaDH.TextChanged += new System.EventHandler(this.txtMaDH_TextChanged);
-            // 
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.Honeydew;
@@ -184,7 +191,7 @@ namespace QLHTChuyenHang
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Honeydew;
-            this.label3.Location = new System.Drawing.Point(64, 321);
+            this.label3.Location = new System.Drawing.Point(222, 320);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(321, 24);
             this.label3.TabIndex = 19;
@@ -197,12 +204,12 @@ namespace QLHTChuyenHang
             this.gridViewDSDH.BackgroundColor = System.Drawing.Color.Honeydew;
             this.gridViewDSDH.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridViewDSDH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridViewDSDH.Location = new System.Drawing.Point(24, 347);
+            this.gridViewDSDH.Location = new System.Drawing.Point(16, 347);
             this.gridViewDSDH.Name = "gridViewDSDH";
             this.gridViewDSDH.ReadOnly = true;
             this.gridViewDSDH.RowHeadersWidth = 51;
             this.gridViewDSDH.RowTemplate.Height = 24;
-            this.gridViewDSDH.Size = new System.Drawing.Size(726, 178);
+            this.gridViewDSDH.Size = new System.Drawing.Size(747, 147);
             this.gridViewDSDH.TabIndex = 17;
             this.gridViewDSDH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewDSDH_CellContentClick);
             // 
@@ -229,12 +236,38 @@ namespace QLHTChuyenHang
             this.lblExit.Text = "x";
             this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
             // 
+            // gridViewTTDH
+            // 
+            this.gridViewTTDH.AllowUserToAddRows = false;
+            this.gridViewTTDH.AllowUserToDeleteRows = false;
+            this.gridViewTTDH.BackgroundColor = System.Drawing.Color.Honeydew;
+            this.gridViewTTDH.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridViewTTDH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewTTDH.Location = new System.Drawing.Point(16, 524);
+            this.gridViewTTDH.Name = "gridViewTTDH";
+            this.gridViewTTDH.ReadOnly = true;
+            this.gridViewTTDH.RowHeadersWidth = 51;
+            this.gridViewTTDH.RowTemplate.Height = 24;
+            this.gridViewTTDH.Size = new System.Drawing.Size(747, 178);
+            this.gridViewTTDH.TabIndex = 29;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Honeydew;
+            this.label6.Location = new System.Drawing.Point(265, 497);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(230, 24);
+            this.label6.TabIndex = 30;
+            this.label6.Text = "TRẠNG THÁI ĐƠN HÀNG";
+            // 
             // TaiXeUpdateDH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(983, 560);
+            this.ClientSize = new System.Drawing.Size(983, 714);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnDaNhan);
             this.Controls.Add(this.btnXemInfo);
@@ -245,6 +278,7 @@ namespace QLHTChuyenHang
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSDH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTTDH)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,11 +292,13 @@ namespace QLHTChuyenHang
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView gridViewDSDH;
-        private System.Windows.Forms.TextBox txtMaDH;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbTrangThai;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cbMaDH;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridView gridViewTTDH;
     }
 }

@@ -42,7 +42,7 @@ namespace QLHTChuyenHang
             this.btnTTDT.BackColor = System.Drawing.Color.DarkSlateGray;
             this.btnTTDT.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTDT.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnTTDT.Location = new System.Drawing.Point(103, 18);
+            this.btnTTDT.Location = new System.Drawing.Point(99, 18);
             this.btnTTDT.Name = "btnTTDT";
             this.btnTTDT.Size = new System.Drawing.Size(340, 70);
             this.btnTTDT.TabIndex = 37;

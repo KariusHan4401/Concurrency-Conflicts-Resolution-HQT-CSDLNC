@@ -24,11 +24,13 @@ namespace QLHTChuyenHang
         }
         public string getConnectionString(string name, string pw)
         {
-            return @"Server=MSI;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
+            //return @"Server=MSI;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
+            return @"Server=LIN-LIN\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
+
 
         }
 
-    private void label1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

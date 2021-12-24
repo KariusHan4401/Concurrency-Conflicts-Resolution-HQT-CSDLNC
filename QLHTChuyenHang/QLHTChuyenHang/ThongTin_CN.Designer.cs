@@ -40,7 +40,7 @@ namespace QLHTChuyenHang
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(52, 53);
+            this.dataGridView2.Location = new System.Drawing.Point(51, 53);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -48,6 +48,7 @@ namespace QLHTChuyenHang
             this.dataGridView2.RowTemplate.Height = 29;
             this.dataGridView2.Size = new System.Drawing.Size(1402, 465);
             this.dataGridView2.TabIndex = 20;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // ThongTin_CN
             // 

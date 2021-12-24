@@ -140,7 +140,9 @@
     <Compile Include="ThongTinDT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTinDT.Designer.cs" />
+    <Compile Include="ThongTinDT.designer.cs">
+      <DependentUpon>ThongTinDT.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThongTin_CN.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,7 +188,9 @@
     <EmbeddedResource Include="TaiXeUpdateDH.resx">
       <DependentUpon>TaiXeUpdateDH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongTinDT.resx" />
+    <EmbeddedResource Include="ThongTinDT.resx">
+      <DependentUpon>ThongTinDT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThongTin_CN.resx">
       <DependentUpon>ThongTin_CN.cs</DependentUpon>
     </EmbeddedResource>

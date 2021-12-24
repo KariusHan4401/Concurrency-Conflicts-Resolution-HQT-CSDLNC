@@ -73,7 +73,6 @@ namespace QLHTChuyenHang
 
         private void DoanhThuDT_Load(object sender, EventArgs e)
         {
-            LoadDoanhThu();
         }
 
         private void button2_Click(object sender, EventArgs e)

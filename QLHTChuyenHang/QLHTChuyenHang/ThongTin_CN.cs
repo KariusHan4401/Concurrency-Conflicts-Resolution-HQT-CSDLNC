@@ -43,5 +43,10 @@ namespace QLHTChuyenHang
         {
             LoadData("SELECT * FROM UV_CN_DOITAC", dataGridView2);
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

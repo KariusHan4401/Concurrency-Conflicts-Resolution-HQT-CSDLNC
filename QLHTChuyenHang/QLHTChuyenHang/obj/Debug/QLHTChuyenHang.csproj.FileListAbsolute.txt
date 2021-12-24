@@ -61,3 +61,8 @@ D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTCh
 D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.exe
 D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.pdb
 D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTinDT.resources
+C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT.resources
+C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT_CN.resources
+C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT_DT.resources
+C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_CN.resources
+C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_DT.resources

@@ -65,9 +65,9 @@ namespace QLHTChuyenHang
                     MessageBox.Show("Cập nhật thông tin thành công!");
                 }
 
-                if (txtDuong.Text != "")
+                if (txtQuanDD.Text != "")
                 {
-                    query = "EXEC USP_DT_Duong N'" + txtDuong.Text + "'";
+                    query = "EXEC USP_DT_QuanNDD N'" + txtQuanDD.Text + "'";
                     SqlCommand cmd2 = new SqlCommand(query, connection);
                     cmd2.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thông tin thành công!");
@@ -99,6 +99,15 @@ namespace QLHTChuyenHang
                     count += 1;
                 }
 
+                if (txtDuong.Text != "")
+                {
+                    if (count != 0)
+                        query += "', DUONG = N'" + txtDuong.Text;
+                    else
+                        query += "DUONG = N'" + txtDuong.Text;
+                    count += 1;
+                }
+
                 if (txtPhuong.Text != "")
                 {
                     if (count != 0)
@@ -126,15 +135,6 @@ namespace QLHTChuyenHang
                     count += 1;
                 }
 
-                if (txtQuanDD.Text != "")
-                {
-                    if (count != 0)
-                        query += "', QUAN_NDD = N'" + txtQuanDD.Text;
-                    else
-                        query += "QUAN_NDD = N'" + txtQuanDD.Text;
-                    count += 1;
-                }
-
                 if (txtTinhDD.Text != "")
                 {
                     if (count != 0)
@@ -152,8 +152,8 @@ namespace QLHTChuyenHang
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Cập nhật thông tin thành công!");
-                }                       
-                
+                }
+
                 connection.Close();
             }
 

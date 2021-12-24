@@ -41,18 +41,18 @@ COMMIT TRAN
 GO
 CREATE 
 --ALTER
-PROC USP_DT_Duong
-	@DUONG nvarchar(20)
+PROC USP_DT_QuanNDD
+	@QUAN_NDD nvarchar(20)
 AS
 set tran isolation level Repeatable read 
 BEGIN TRAN
-	DECLARE @DUONG_HT nvarchar(30)
-	SET @DUONG_HT = (SELECT DUONG
-	                 FROM UV_TTDOITAC)
+	DECLARE @QUAN nvarchar(30)
+	SET @QUAN = (SELECT QUAN_NDD
+	             FROM UV_TTDOITAC)
 	
-	IF (@DUONG = @DUONG_HT)
+	IF (@QUAN_NDD = @QUAN)
 	BEGIN
-		PRINT N'Tên đường muốn đổi trùng với tên đường hiện tại'
+		PRINT N'Tên quận muốn đổi trùng với tên quận hiện tại'
 		ROLLBACK TRAN
 		RETURN
 	END
@@ -61,7 +61,7 @@ BEGIN TRAN
 
 	BEGIN TRY
 		UPDATE UV_TTDOITAC
-		SET DUONG = @DUONG
+		SET QUAN_NDD = @QUAN_NDD
 		
 	END TRY
 

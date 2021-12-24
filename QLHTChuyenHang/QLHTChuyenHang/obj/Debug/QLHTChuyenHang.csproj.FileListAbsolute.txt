@@ -41,3 +41,23 @@ C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\D
 C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.pdb
 C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.HomePage.resources
 C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ProductForm.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.csproj.AssemblyReference.cache
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT_CN.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT_DT.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.DoanhThuDT.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.HomePage.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.Login.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ProductForm.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.Properties.Resources.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.TaiXeUpdateDH.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_CN.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_DT.resources
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.csproj.GenerateResource.cache
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.csproj.CoreCompileInputs.cache
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.exe
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.pdb
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.exe.config
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.exe
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\bin\Debug\QLHTChuyenHang.pdb
+D:\HTTT\HK1_Năm3\HQT\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTinDT.resources

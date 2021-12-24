@@ -86,6 +86,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChinhSuaTT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChinhSuaTT.Designer.cs">
+      <DependentUpon>ChinhSuaTT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChinhSuaTT_CN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChinhSuaTT_CN.Designer.cs">
+      <DependentUpon>ChinhSuaTT_CN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChinhSuaTT_DT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChinhSuaTT_DT.Designer.cs">
+      <DependentUpon>ChinhSuaTT_DT.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionString.cs" />
     <Compile Include="DoanhThuDT.cs">
       <SubType>Form</SubType>
@@ -122,9 +140,28 @@
     <Compile Include="ThongTinDT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongTinDT.Designer.cs">
-      <DependentUpon>ThongTinDT.cs</DependentUpon>
+    <Compile Include="ThongTinDT.Designer.cs" />
+    <Compile Include="ThongTin_CN.cs">
+      <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ThongTin_CN.Designer.cs">
+      <DependentUpon>ThongTin_CN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTin_DT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThongTin_DT.Designer.cs">
+      <DependentUpon>ThongTin_DT.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ChinhSuaTT.resx">
+      <DependentUpon>ChinhSuaTT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChinhSuaTT_CN.resx">
+      <DependentUpon>ChinhSuaTT_CN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChinhSuaTT_DT.resx">
+      <DependentUpon>ChinhSuaTT_DT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DoanhThuDT.resx">
       <DependentUpon>DoanhThuDT.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,8 +186,12 @@
     <EmbeddedResource Include="TaiXeUpdateDH.resx">
       <DependentUpon>TaiXeUpdateDH.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongTinDT.resx">
-      <DependentUpon>ThongTinDT.cs</DependentUpon>
+    <EmbeddedResource Include="ThongTinDT.resx" />
+    <EmbeddedResource Include="ThongTin_CN.resx">
+      <DependentUpon>ThongTin_CN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTin_DT.resx">
+      <DependentUpon>ThongTin_DT.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

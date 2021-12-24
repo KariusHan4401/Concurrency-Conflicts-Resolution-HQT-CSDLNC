@@ -70,6 +70,7 @@ namespace QLHTChuyenHang
             this.btnXemInfo.TabIndex = 9;
             this.btnXemInfo.Text = "Xem thông tin";
             this.btnXemInfo.UseVisualStyleBackColor = true;
+            this.btnXemInfo.Click += new System.EventHandler(this.btnXemInfo_Click);
             // 
             // panel1
             // 

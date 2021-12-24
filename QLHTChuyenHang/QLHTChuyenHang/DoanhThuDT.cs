@@ -82,5 +82,13 @@ namespace QLHTChuyenHang
             login.Show();
             this.Hide();
         }
+
+        private void btnXemInfo_Click(object sender, EventArgs e)
+        {
+            ThongTinDT TTDT = new ThongTinDT();
+            this.Hide();
+            TTDT.ShowDialog();
+            this.Show();
+        }
     }
 }

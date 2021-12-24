@@ -67,5 +67,12 @@ namespace QLHTChuyenHang
                 connection.Close();
             }
         }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
     }
 }

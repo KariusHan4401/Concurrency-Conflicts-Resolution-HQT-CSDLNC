@@ -40,7 +40,7 @@ namespace QLHTChuyenHang
                 else
                 {
                     connection.Open();
-                    var query = "EXEC USP_CAPNHAT_SP'" + prodID.Text + "', '" + categoryCB.Text + "', '" + prodName.Text + "', N'" + prodDes.Text + "'";
+                    var query = "EXEC USP_CAPNHAT_SP'" + prodID.Text + "', '" + categoryCB.Text + "', N'" + prodName.Text + "', N'" + prodDes.Text + "'";
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Product Successfully Updated!!");
@@ -174,6 +174,13 @@ namespace QLHTChuyenHang
             ProductForm_Load();
             Category_Load();
             fillCategoryCombo();
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
     }
 }

@@ -25,8 +25,8 @@ namespace QLHTChuyenHang
         public string getConnectionString(string name, string pw)
         {
             //return @"Server=MSI;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
-            return @"Server=LIN-LIN\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
-
+            //return @"Server=LIN-LIN\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
+            return @"Server=LAPTOP-KTF30DB7\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
 
         }
 

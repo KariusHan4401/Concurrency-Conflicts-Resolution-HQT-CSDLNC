@@ -104,7 +104,6 @@
     <Compile Include="ChinhSuaTT_DT.Designer.cs">
       <DependentUpon>ChinhSuaTT_DT.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConnectionString.cs" />
     <Compile Include="DoanhThuDT.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -66,3 +66,8 @@ C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTC
 C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT_DT.resources
 C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_CN.resources
 C:\Users\lephu\Desktop\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_DT.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT_CN.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ChinhSuaTT_DT.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_CN.resources
+C:\Users\AN515-52\OneDrive - VNU-HCMUS\Desktop\CNTT_KHTN\HK1_2021_2022\HQTCSDL\DA_HQT_2021\QLHTChuyenHang\QLHTChuyenHang\obj\Debug\QLHTChuyenHang.ThongTin_DT.resources

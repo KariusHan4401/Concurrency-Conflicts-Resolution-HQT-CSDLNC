@@ -35,6 +35,7 @@ namespace QLHTChuyenHang
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.findButton = new System.Windows.Forms.Button();
+            this.logout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Products)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,11 +53,11 @@ namespace QLHTChuyenHang
             // Products
             // 
             this.Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Products.Location = new System.Drawing.Point(159, 136);
+            this.Products.Location = new System.Drawing.Point(130, 131);
             this.Products.Name = "Products";
             this.Products.RowHeadersWidth = 51;
             this.Products.RowTemplate.Height = 24;
-            this.Products.Size = new System.Drawing.Size(677, 343);
+            this.Products.Size = new System.Drawing.Size(706, 344);
             this.Products.TabIndex = 2;
             // 
             // Reload
@@ -104,12 +105,27 @@ namespace QLHTChuyenHang
             this.findButton.UseVisualStyleBackColor = false;
             this.findButton.Click += new System.EventHandler(this.findButton_Click);
             // 
+            // logout
+            // 
+            this.logout.FlatAppearance.BorderSize = 2;
+            this.logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logout.Font = new System.Drawing.Font("Corbel", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logout.ForeColor = System.Drawing.Color.Honeydew;
+            this.logout.Location = new System.Drawing.Point(130, 495);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(178, 37);
+            this.logout.TabIndex = 14;
+            this.logout.Text = "LOGOUT";
+            this.logout.UseVisualStyleBackColor = true;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(980, 580);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.findButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSearch);
@@ -133,5 +149,6 @@ namespace QLHTChuyenHang
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button findButton;
+        private System.Windows.Forms.Button logout;
     }
 }

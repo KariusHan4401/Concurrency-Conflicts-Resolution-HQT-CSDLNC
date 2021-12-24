@@ -50,6 +50,7 @@ namespace QLHTChuyenHang
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.prodBT = new System.Windows.Forms.Button();
+            this.logout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Category)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Products)).BeginInit();
@@ -83,12 +84,12 @@ namespace QLHTChuyenHang
             // 
             // categoryCB
             // 
-            this.categoryCB.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoryCB.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryCB.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.categoryCB.FormattingEnabled = true;
             this.categoryCB.Location = new System.Drawing.Point(211, 117);
             this.categoryCB.Name = "categoryCB";
-            this.categoryCB.Size = new System.Drawing.Size(184, 32);
+            this.categoryCB.Size = new System.Drawing.Size(184, 31);
             this.categoryCB.TabIndex = 32;
             this.categoryCB.Text = "ID Loại Hàng";
             this.categoryCB.SelectedIndexChanged += new System.EventHandler(this.categoryCB_SelectedIndexChanged);
@@ -131,12 +132,12 @@ namespace QLHTChuyenHang
             // 
             // cateCB
             // 
-            this.cateCB.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cateCB.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cateCB.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.cateCB.FormattingEnabled = true;
             this.cateCB.Location = new System.Drawing.Point(640, 22);
             this.cateCB.Name = "cateCB";
-            this.cateCB.Size = new System.Drawing.Size(218, 32);
+            this.cateCB.Size = new System.Drawing.Size(218, 31);
             this.cateCB.TabIndex = 28;
             this.cateCB.Text = "Chọn ID Loại Hàng";
             this.cateCB.SelectedIndexChanged += new System.EventHandler(this.cateCB_SelectedIndexChanged);
@@ -234,26 +235,26 @@ namespace QLHTChuyenHang
             // 
             // prodDes
             // 
-            this.prodDes.Font = new System.Drawing.Font("Corbel", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodDes.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prodDes.Location = new System.Drawing.Point(211, 213);
             this.prodDes.Name = "prodDes";
-            this.prodDes.Size = new System.Drawing.Size(184, 28);
+            this.prodDes.Size = new System.Drawing.Size(184, 27);
             this.prodDes.TabIndex = 19;
             // 
             // prodName
             // 
-            this.prodName.Font = new System.Drawing.Font("Corbel", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodName.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prodName.Location = new System.Drawing.Point(211, 165);
             this.prodName.Name = "prodName";
-            this.prodName.Size = new System.Drawing.Size(184, 28);
+            this.prodName.Size = new System.Drawing.Size(184, 27);
             this.prodName.TabIndex = 18;
             // 
             // prodID
             // 
-            this.prodID.Font = new System.Drawing.Font("Corbel", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodID.Font = new System.Drawing.Font("Courier New", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prodID.Location = new System.Drawing.Point(211, 70);
             this.prodID.Name = "prodID";
-            this.prodID.Size = new System.Drawing.Size(184, 28);
+            this.prodID.Size = new System.Drawing.Size(184, 27);
             this.prodID.TabIndex = 16;
             // 
             // editProd
@@ -307,12 +308,27 @@ namespace QLHTChuyenHang
             this.prodBT.UseVisualStyleBackColor = false;
             this.prodBT.Click += new System.EventHandler(this.prodBT_Click);
             // 
+            // logout
+            // 
+            this.logout.FlatAppearance.BorderSize = 0;
+            this.logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logout.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logout.ForeColor = System.Drawing.Color.LightSeaGreen;
+            this.logout.Location = new System.Drawing.Point(3, 711);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(174, 40);
+            this.logout.TabIndex = 33;
+            this.logout.Text = "LOGOUT";
+            this.logout.UseVisualStyleBackColor = true;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(1309, 754);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.prodBT);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -353,5 +369,6 @@ namespace QLHTChuyenHang
         private System.Windows.Forms.DataGridView Category;
         private System.Windows.Forms.ComboBox categoryCB;
         private System.Windows.Forms.Button prodBT;
+        private System.Windows.Forms.Button logout;
     }
 }

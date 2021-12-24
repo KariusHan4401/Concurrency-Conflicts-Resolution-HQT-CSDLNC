@@ -44,7 +44,7 @@ namespace QLHTChuyenHang
             this.label3 = new System.Windows.Forms.Label();
             this.gridViewDSDH = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblExit = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTTDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewDSDH)).BeginInit();
@@ -92,7 +92,6 @@ namespace QLHTChuyenHang
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.gridViewDSDH);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.lblExit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(208, 0);
             this.panel1.Name = "panel1";
@@ -251,17 +250,19 @@ namespace QLHTChuyenHang
             this.label1.TabIndex = 14;
             this.label1.Text = "CẬP NHẬT ĐƠN HÀNG";
             // 
-            // lblExit
+            // button1
             // 
-            this.lblExit.AutoSize = true;
-            this.lblExit.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExit.ForeColor = System.Drawing.Color.Honeydew;
-            this.lblExit.Location = new System.Drawing.Point(725, 9);
-            this.lblExit.Name = "lblExit";
-            this.lblExit.Size = new System.Drawing.Size(25, 28);
-            this.lblExit.TabIndex = 13;
-            this.lblExit.Text = "x";
-            this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.LightSeaGreen;
+            this.button1.Location = new System.Drawing.Point(17, 227);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 37);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Trở lại";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TaiXeUpdateDH
             // 
@@ -269,11 +270,12 @@ namespace QLHTChuyenHang
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(983, 714);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnDaNhan);
             this.Controls.Add(this.btnXemInfo);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TaiXeUpdateDH";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tài xế cập nhật đơn hàng";
             this.Load += new System.EventHandler(this.TaiXeUpdateDH_Load);
             this.panel1.ResumeLayout(false);
@@ -289,7 +291,6 @@ namespace QLHTChuyenHang
         private System.Windows.Forms.Button btnXemInfo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView gridViewDSDH;
@@ -301,5 +302,6 @@ namespace QLHTChuyenHang
         private System.Windows.Forms.ComboBox cbMaDH;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView gridViewTTDH;
+        private System.Windows.Forms.Button button1;
     }
 }

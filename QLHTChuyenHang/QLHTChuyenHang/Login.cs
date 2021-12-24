@@ -24,7 +24,7 @@ namespace QLHTChuyenHang
         }
         public string getConnectionString(string name, string pw)
         {
-            return @"Server=LAPTOP-KTF30DB7\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
+            return @"Server=LIN-LIN\SQLEXPRESS;Database=QLHTChuyenHang;User Id=" + name + "; Password=" + pw;
 
         }
 
@@ -69,28 +69,9 @@ namespace QLHTChuyenHang
                 try
                 {
                     connection.Open();
-                    string query="";
-                    switch (comboBox1.SelectedIndex)
-                    {
-                        case 0:
-                            query = "SELECT MATK FROM TAI_KHOAN";
-                            break;
-                        case 1:
-                            query = "SELECT MATK FROM UV_TTDOITAC";
-                            break;
-                        case 2:
-                            query = "SELECT MATK FROM UV_TTKHACHHANG";
-                            break;
-                        case 3:
-                            query = "SELECT MATX FROM UV_TTTAIXE";
-                            break;
-                        case 4:
-                            query = "SELECT MADT FROM DOI_TAC"; // Do nhân viên có thể truy cập được bảng này
-                            break;
-                    }
-
+                    string query= "SELECT CURRENT_USER";
+                 
                     SqlCommand cmd = new SqlCommand(query, connection);
-                    MessageBox.Show("Login successed!");
                     username = txtUsername.Text;
                     password = txtPw.Text;
                     myConnection = getConnectionString(txtUsername.Text, txtPw.Text);

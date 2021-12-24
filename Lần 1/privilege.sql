@@ -23,6 +23,7 @@ create user Jewel for login Jewel
 create user Jack for login Jack
 create user Adell for login Adell
 create user Kath for login Kath
+create user Stacey for login Stacey
 --Create Role
 exec sp_addrole 'DOI_TAC'
 exec sp_addrole 'KHACH_HANG'

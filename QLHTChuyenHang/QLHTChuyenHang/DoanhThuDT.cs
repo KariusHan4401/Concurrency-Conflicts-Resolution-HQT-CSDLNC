@@ -22,54 +22,27 @@ namespace QLHTChuyenHang
         SqlConnection connection = new SqlConnection(Login.myConnection);
         void LoadDoanhThu()
         {
-            connection.Open();
-
-            SqlCommand command = connection.CreateCommand();
-            SqlTransaction transaction;
-
-            transaction = connection.BeginTransaction("XemDoanhThu");
-
-            command.Connection = connection;
-            command.Transaction = transaction;
-
             try
             {
-                // Lỗi Phantom Read
-                //command.CommandText =
-                //"SET TRAN ISOLATION LEVEL REPEATABLE READ  SELECT * FROM UV_DOANHTHUDT";
-
-                // Fix Lỗi
-                command.CommandText =
-                        "SET TRAN ISOLATION LEVEL SERIALIZABLE  SELECT * FROM UV_DOANHTHUDT";
-                SqlDataAdapter sqlDA = new SqlDataAdapter(command);
-                DataTable dt1 = new DataTable();
-                sqlDA.Fill(dt1);
-                gridViewDT.DataSource = dt1;
+                connection.Open();
+                string query = "EXEC USP_DT_XEMDOANHTHU";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+                DataSet ds = new DataSet();
+                sqlDataAdapter.Fill(ds);
+                gridViewDT.DataSource = ds.Tables[0];
                 gridViewDT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                Thread.Sleep(4000);
-                command.CommandText =
-                    "SELECT MADH, PHI_SAN_PHAM, PHI_GIAM, PHI_SAN_PHAM - PHI_GIAM AS THANH_TIEN, HINH_THUC_THANH_TOAN FROM UV_DHDOITAC WHERE TRANG_THAI = N'Đã giao hàng'";
-                sqlDA = new SqlDataAdapter(command);
-                DataTable dt2 = new DataTable();
-                sqlDA.Fill(dt2);
-                gridViewDSDH.DataSource = dt2;
+
+                gridViewDSDH.DataSource = ds.Tables[1];
                 gridViewDSDH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                transaction.Commit();
+                connection.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                try
-                {
-                    transaction.Rollback();
-                }
-                catch (Exception ex2)
-                {
-                    MessageBox.Show(ex2.Message);
-                }
+                connection.Close();
             }
-
-            connection.Close();
         }
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
@@ -100,6 +73,14 @@ namespace QLHTChuyenHang
 
         private void DoanhThuDT_Load(object sender, EventArgs e)
         {
+            LoadDoanhThu();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
         }
     }
 }

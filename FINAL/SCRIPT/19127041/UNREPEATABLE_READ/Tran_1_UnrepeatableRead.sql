@@ -1,0 +1,5 @@
+﻿USE QLHTChuyenHang
+GO
+-- KHÁCH HÀNG XEM THÀNH TIỀN --
+-- 'Keshi', 'TK000031'
+EXEC  USP_KH_CTDH 'SP000008', 'CN000027', 2

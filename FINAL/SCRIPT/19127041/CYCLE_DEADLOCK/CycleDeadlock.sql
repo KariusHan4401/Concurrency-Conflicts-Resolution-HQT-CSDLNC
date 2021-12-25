@@ -1,0 +1,65 @@
+﻿USE QLHTChuyenHang
+GO
+
+CREATE 
+-- ALTER 
+PROC USP_DT_TTCASE1
+	@NguoiDaiDien NVARCHAR(30),
+	@MaCN CHAR(8),
+	@Duong NVARCHAR(50)
+AS
+BEGIN TRAN
+	BEGIN TRY
+		IF @MaCN NOT IN (SELECT MACN
+						FROM UV_CN_DOITAC)
+			BEGIN
+				PRINT @MaCN + N' không phải chi nhánh của đối tác!!'
+				ROLLBACK TRAN
+			END
+		UPDATE UV_TTDOITAC
+		SET NGUOI_DAI_DIEN = @NguoiDaiDien
+		--ĐỂ TEST
+		WAITFOR DELAY '0:0:05'
+		---------------------------------
+		UPDATE UV_CN_DOITAC
+		SET DUONG = @Duong
+		WHERE MACN = @MaCN
+	END TRY
+	BEGIN CATCH
+		DECLARE @ErrorMessage NVARCHAR(4000)
+		SELECT @ErrorMessage = ERROR_MESSAGE()
+		RAISERROR(@ErrorMessage,16,1)
+		ROLLBACK TRAN	
+	END CATCH
+COMMIT TRAN
+
+GO
+CREATE 
+-- ALTER 
+PROC USP_DT_TTCASE2
+	@NguoiDaiDien NVARCHAR(30),
+	@MaCN CHAR(8),
+	@Phuong NVARCHAR(50)
+AS
+BEGIN TRAN
+	BEGIN TRY
+		IF @MaCN NOT IN (SELECT MACN
+						FROM UV_CN_DOITAC)
+			BEGIN
+				PRINT @MaCN + N' không phải chi nhánh của đối tác!!'
+				ROLLBACK TRAN
+			END
+		UPDATE UV_CN_DOITAC
+		SET PHUONG = @Phuong
+		WHERE MACN = @MaCN
+
+		UPDATE UV_TTDOITAC
+		SET NGUOI_DAI_DIEN = @NguoiDaiDien
+	END TRY
+	BEGIN CATCH
+		DECLARE @ErrorMessage NVARCHAR(4000)
+		SELECT @ErrorMessage = ERROR_MESSAGE()
+		RAISERROR(@ErrorMessage,16,1)
+		ROLLBACK TRAN	
+	END CATCH
+COMMIT TRAN

@@ -1,0 +1,16 @@
+﻿USE QLHTChuyenHang
+GO
+
+SELECT * FROM UV_TTDOITAC
+
+--tk: Lily
+--mk: TK000027
+
+EXEC USP_DT_NDD N'Lê Thùy Dương'
+
+SELECT * FROM UV_TTDOITAC
+
+
+
+
+

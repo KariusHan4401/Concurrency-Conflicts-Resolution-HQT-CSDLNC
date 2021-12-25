@@ -1,0 +1,11 @@
+﻿USE QLHTChuyenHang
+GO
+
+--tk: Lily
+--mk: TK000027
+
+SELECT * FROM UV_TTDOITAC
+
+EXEC USP_DT_QuanNDD '10'
+
+SELECT * FROM UV_TTDOITAC

@@ -1,0 +1,10 @@
+﻿-- ĐỐI TÁC THÊM SẢN PHẨM --
+-- Tài khoản: Username: Meg ; Password: TK000021
+USE QLHTChuyenHang
+GO
+DECLARE @FLAG INT
+EXEC @FLAG = USP_DT_THEMSP 'CN000003','SP000010', 250, 8000
+IF @FLAG = 1
+	PRINT N'THÊM THẤT BẠI'
+ELSE
+	PRINT N'THÊM THÀNH CÔNG'
